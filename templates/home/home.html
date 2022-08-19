@@ -1,0 +1,123 @@
+{% extends 'index.html' %}
+{% block title %}Noty | Home{% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block body %}
+<html>
+<link rel="stylesheet" href="../card.css">
+<head>
+<style>
+h2{
+  background-color:
+}
+.carousel-item{
+    height: 600px;
+} 
+.carousel-item img{
+    height: 600px;
+}
+
+</style>
+
+<div style="visibility:hidden;">
+<audio src="../static/noty.mp3" autoplay once>
+</audio>
+</div>
+
+<div class="container my-3">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../static/1.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../static/2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../static/3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</br></br></br>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to NotyProgrammer</h1>
+    <p class="lead">This is a tech blogs here you can see and share your content with others</p>
+    <a href="blog/{{post.slug}}" class="btn btn-info">Read More</a>
+  </div>
+</div>
+</br>
+
+<center><h2> Tech Articles By NotyProgrammer:</h2></center>
+</br>
+
+<div class="row">
+{% for post in allpost %}
+<div class="col-sm">
+<div class="card" style="width: 18rem;">
+  <img src="{{post.img.url}}" class="card-img-top" style="height:200px;" alt="Soon Available">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.content|truncatechars:150}}</p>
+    <h6>{{post.timestamp}}</h6>
+    <a href="blog/{{post.slug}}" class="btn btn-dark">Read More</a>
+  </div>
+</div>
+</br> 
+</div>
+{% endfor %}
+</div>
+{% comment %} 
+
+
+{% for post in allpost  %}
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 my-3 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+        <div class="pic" style="height:30px;  width:40px;"><img src="../static/3.jpg" class="img-fluid" alt=""></div>
+                  <strong class="d-inline-block mb-2 text-gutters"> Article by {{ post.author}}</strong>
+
+          <strong class="d-inline-block mb-2 text-primary">{{ post.title}}</strong>
+         
+          <div class="mb-1 text-muted">{{ post.timestamp}}
+           <p class="card-text mb-auto">{{ post.content | truncatechars:300}}</p>
+           <br>
+          <a href="/blog/{{post.slug}}" role="button" class="btn btn-dark"> Read more </a>
+          </div>
+        </div>
+        <br>
+       
+
+</div>
+{% endfor %} {% endcomment %}
+
+
+
+
+
+
+{% endblock body %}

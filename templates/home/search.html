@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block title %}Noty | Search Results{% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block body %}
+<center><h2> Search Results:</h2></center>
+</br>
+{% if results|length < 1 %}
+No search result found!<br></br>
+Your search query - <b>{{query}}</b> - did not match any documents.</br>
+
+Suggestions:
+
+<ul> Make sure that words are spelled correctly.<br>
+Try different keywords
+</ul>
+
+
+
+{% else %}
+{% for post in results %}
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 my-3 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+        <div class="pic" style="height:200px;  width:200px;"><img src="{{post.img.url}}" class="img-fluid" alt=""></div>
+                  <strong class="d-inline-block text-gutters"> Article by {{ post.author}}</strong>
+
+          <strong class="d-inline-block text-primary">{{ post.title}}</strong>
+         
+          <div class="mb-1 text-muted">{{ post.timestamp}}
+           <p class="card-text mb-auto">{{ post.content | truncatechars:300}}</p>
+           <br>
+          <a href="../blog/{{post.slug}}" role="button" class="btn btn-dark"> Read more </a>
+          </div>
+        </div>
+        <br>
+       
+
+</div>
+{% endfor %}
+
+{% endif %}
+{% endblock body %}

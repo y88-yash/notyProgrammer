@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block title %}Noty | Contact{% endblock title %}
+{% block contactactive %} active {% endblock contactactive %}
+{% block body %}
+<style>
+body{
+   {% comment %} background-color:#fd3838;
+	 background-image: linear-gradient(147deg, #ffe53b 0%, #fd3838 74%); {% endcomment %}
+   background-image:url("../static/contact.jpg");
+   background-repeat: no-repeat;
+   background-size:100%;
+}
+</style>
+<div class="container my-3">
+<h3><p class="text-white ">Contact NotyProgrammer's</p></h3>
+</br>   
+<form  method="post" action="/contact_us">
+{% csrf_token %}
+  <div class="form-group">
+    <p class="text-white ">Name</p>
+    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter Name">
+    
+  </div>
+  </br>
+  <div class="form-group">
+    <p class="text-white ">Email Address</p>
+    <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+  </div>
+  </br>
+  <div class="form-group">
+    <p class="text-white">Your Message</p>
+   <textarea class="form-control" id="content" rows="5" cols="30" placeholder="Enter your Message" name="content"></textarea>
+  </div>
+  <div class="form-group form-check">
+    
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+{% endblock body %}

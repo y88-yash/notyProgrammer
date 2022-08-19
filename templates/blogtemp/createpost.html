@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %}Noty | Add Post{% endblock title %}
+{% block homeactive %}active{% endblock homeactive %}
+{% block body %}
+<style>
+body{
+
+
+}
+.jumbotron{
+background-image:url('/static/create.png');
+background-size: 100% 100%;
+}
+@media (max-width:640px){
+.bd-placeholder-img{
+height:80px;
+}
+
+</style>
+<br>
+<br>
+
+<div class="container">
+    <div id="first">
+        <div class="jumbotron p-4 p-md-5 text-black rounded">
+            <div class="col-md-6 px-0">
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    
+  <br><br>
+<div class="container mt-5 border border-info " >
+ <form method="post" action="{% url 'createposts' %}" enctype="multipart/form-data">
+{% csrf_token %}
+   <div class="form-group  ">
+   
+     <h3>{{ form.title|as_crispy_field }}</h3>
+  </div>
+
+  <div class="form-group">
+    
+     <h3>{{ form.content|as_crispy_field }}</h3>
+    
+  </div>
+  
+  <form>
+  <div class="form-group">
+    
+     <h3>{{ form.img|as_crispy_field }}</h3>
+  </div>
+  </br>
+
+  
+  <div class="form-group">
+  <button class="btn btn-success" value="submit">Post</button>
+</div> 
+ </form> 
+ </div>
+{% endblock body%}

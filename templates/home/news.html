@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block body %}
+<br> 
+<style>
+.jumbotron{
+background-image:url('/static/news3.jpg');
+background-size: 100% 100%;
+}
+@media (max-width:640px){
+.bd-placeholder-img{
+height:80px;
+}
+}
+</style>
+<div class="container">
+    <div id="first">
+        <div class="jumbotron p-4 p-md-5 text-black rounded">
+            <div class="col-md-6 px-0">
+                <h1 class="display-4 font-italic ">Noty-News</h1>
+                
+                <hr>
+                <p class="lead my-3">
+                </p><h3> Here You can see Top Headlines, Breaking News, Latest updates, Trending News
+                    </h3>
+            </div>
+        </div>
+    </div>
+    
+  <br><br>
+
+
+<div class="row">
+{% for x in api.articles %}
+<div class="col-sm">
+<div class="card" style="width: 18rem;">
+  <img src="{{x.urlToImage}}" class="card-img-top" alt="{{x.source.name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{x.title}}</h5>
+    <p class="card-text">{{x.description|truncatechars:150}}</p>
+    <a href="{{x.url}}" class="btn btn-primary">Read More</a>
+  </div>
+</div>
+</br> 
+</div>
+{% endfor %}
+</div>
+{% endblock body %}
